@@ -181,7 +181,6 @@ Console.WriteLine("\"zip\": \"{0}\",", zip);
 Console.WriteLine("\"city\": \"{0}\",", city);
 Console.WriteLine("\"address\": \"{0}\",", address);
 Console.WriteLine("\"profile\": \"{0}\"", profile);
-
 Console.WriteLine("},");
 Console.WriteLine("\"notification_url\": \"{0}\",", notification_url);
 Console.WriteLine("\"return_url\": \"{0}\",", return_url);
