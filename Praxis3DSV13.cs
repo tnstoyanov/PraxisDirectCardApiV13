@@ -189,5 +189,5 @@ Console.WriteLine("\"version\": \"{0}\",", version);
 Console.WriteLine("\"timestamp\": {0}", timestamp);
 Console.WriteLine("}");
 
-// This keep your console window open
+// This keeps your console window open
 Console.ReadLine();
