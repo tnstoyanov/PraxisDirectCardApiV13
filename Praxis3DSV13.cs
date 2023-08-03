@@ -51,7 +51,7 @@ static byte[] Encrypt(string simpletext, byte[] key, byte[] iv)
 }
 
 // Raw card details
-string card_number = "5272532125182297";
+string card_number = "4000027891380961";
 string card_exp = "12/2026";
 string cvv = "333";
 
@@ -70,7 +70,7 @@ string encryptedExpString = Convert.ToBase64String(encryptedExp);
 // Encrypted the cvv
 byte[] encryptedCvv = Encrypt(cvv, secretKey, requestTimestamp);
 string encryptedCvvString = Convert.ToBase64String(encryptedCvv);
-// end of card_data encryption
+// End of card_data encryption
 
 // device_data object (browser info)
 string user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15";
@@ -94,8 +94,8 @@ int cid = rnd.Next();
 string locale = "en-GB";
 // customer_data object
 string country = "ES";
-string first_name = "Tony";
-string last_name = "Stoyanov";
+string first_name = "John";
+string last_name = "Smith";
 string dob = "01/01/1950";
 string email = "tony.stoyanov@tiebreak.solutions";
 string phone = "359888123456";
@@ -103,7 +103,9 @@ string zip = "10010";
 string city = "Malaga";
 string address = "123 Calle del Sol";
 int profile = 0;
-//Callback part
+// This routes your transaction to the relevant Payment Solution Provider (PSP)0
+string gateway = "ebc79c4a0b1800413225fd5343a9f3e9";
+// Callback part
 string notification_url = "https://165191ec2e6bda1c110b03cd4e4f9e79.m.pipedream.net";
 // Return to Deposit Site
 string return_url = "https://tnstoyanov.wixsite.com/payment-response/return";
@@ -120,6 +122,7 @@ string InputBytes =
     + order_id
     + currency
     + amount
+    + gateway
     + notification_url
     + return_url
     + encryptedCardString
@@ -183,6 +186,7 @@ Console.WriteLine("\"city\": \"{0}\",", city);
 Console.WriteLine("\"address\": \"{0}\",", address);
 Console.WriteLine("\"profile\": \"{0}\"", profile);
 Console.WriteLine("},");
+Console.WriteLine("\"gateway\": \"{0}\",", gateway);
 Console.WriteLine("\"notification_url\": \"{0}\",", notification_url);
 Console.WriteLine("\"return_url\": \"{0}\",", return_url);
 Console.WriteLine("\"order_id\": \"{0}\",", order_id);
