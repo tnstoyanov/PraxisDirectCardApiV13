@@ -133,11 +133,12 @@ using (SHA384 sha384Hash = SHA384.Create())
 
     // replacing "-" with empty
     string signature = BitConverter.ToString(hashBytes).Replace("-", String.Empty).ToLower();
-    Console.WriteLine("************");
-    Console.WriteLine("Add this signature to your HTTP headers, for the GT-Authentication parameter:");
+    Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+    Console.WriteLine("// Add this signature to your HTTP headers, for the GT-Authentication parameter:                                   //");
+    Console.WriteLine("//                                                                                                                 //");
+    Console.WriteLine("// " + signature.PadRight(111, ' ') + " //");
+    Console.WriteLine("/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
     Console.WriteLine();
-    Console.WriteLine(signature);
-    Console.WriteLine("************");
 }
 
 // This builds the HTTPS request payload
