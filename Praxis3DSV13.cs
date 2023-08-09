@@ -19,7 +19,7 @@ string transaction_type = "sale";
 // Request parameters
 string currency = "USD";
 // Amount in cents only! 1USD = 100¢
-string amount = "10000";
+string amount = "15200";
 
 // Get Unix time, seconds
 DateTime current_time = DateTime.UtcNow;
