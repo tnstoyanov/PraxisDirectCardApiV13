@@ -19,7 +19,7 @@ string transaction_type = "sale";
 // Request parameters
 string currency = "USD";
 // Amount in cents only! 1USD = 100¢
-string amount = "15200";
+string amount = "1000";
 
 // Get Unix time, seconds
 DateTime current_time = DateTime.UtcNow;
@@ -53,7 +53,7 @@ static byte[] Encrypt(string simpletext, byte[] key, byte[] iv)
 // Raw card details
 string card_number = "4000027891380961";
 string card_exp = "12/2026";
-string cvv = "333";
+string cvv = "568";
 
 // Get the AES key (the merchant_secret) and iv (the timestamp)
 byte[] secretKey = Encoding.ASCII.GetBytes(merchant_secret.PadLeft(32, '0'));
@@ -104,11 +104,11 @@ string city = "Malaga";
 string address = "123 Calle del Sol";
 int profile = 0;
 // This routes your transaction to the relevant Payment Solution Provider (PSP)0
-string gateway = "ebc79c4a0b1800413225fd5343a9f3e9";
+string gateway = "040e154f306f145b84208512d00ef8d9";
 // Callback part
 string notification_url = "https://165191ec2e6bda1c110b03cd4e4f9e79.m.pipedream.net";
-// Return to Deposit Site
-string return_url = "https://tnstoyanov.wixsite.com/payment-response/return";
+// 3DS Return URL to Deposit Site
+string return_url = "https://tnstoyanov.wixsite.com/payment-response/return/?get=1";
 int order_id = rnd.Next();
 string version = "1.3";
 
