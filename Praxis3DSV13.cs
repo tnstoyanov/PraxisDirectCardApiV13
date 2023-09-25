@@ -25,7 +25,7 @@ string amount = "1000";
 DateTime current_time = DateTime.UtcNow;
 long timestamp = ((DateTimeOffset)current_time).ToUnixTimeSeconds();
 
-// encrypt card_data object
+/*** encrypt card_data object ***/
 
 // Invoke AES-256-CBC encryption
 static byte[] Encrypt(string simpletext, byte[] key, byte[] iv)
@@ -70,7 +70,7 @@ string encryptedExpString = Convert.ToBase64String(encryptedExp);
 // Encrypted the cvv
 byte[] encryptedCvv = Encrypt(cvv, secretKey, requestTimestamp);
 string encryptedCvvString = Convert.ToBase64String(encryptedCvv);
-// End of card_data encryption
+/*** End of card_data encryption ***/
 
 // device_data object (browser info)
 string user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15";
