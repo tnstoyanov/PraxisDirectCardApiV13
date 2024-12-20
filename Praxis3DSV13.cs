@@ -9,19 +9,44 @@ using System.Security.Cryptography;
 using System.Text;
 
 // API user. Get it from Praxis. Variables, do NOT hardcode!
+//  Invesus test API user
 string merchant_id = "API-Invesus";
 string application_key = "Invesus.com";
 string merchant_secret = "u66gDFAz1zhIsjGhA9mrvzWa7WGWFYRm";
+// End of Invesus test API user
+
+/* WBS LIVE creds, you should hit Praxis' live environment, see above */
+/*
+string merchant_id = "API-wbandsmith";
+string application_key = "wbandsmith.com";
+string merchant_secret = "kAbFPsWuiUXGy58s1k30gpa5TD6jCky2";
+*/
+/* End of WBandSmith creds */
+
+/* Zenstox LIVE creds, you should hit Praxis' live environment, see above */
+/*
+string merchant_id = "API-zenstox";
+string application_key = "zenstox.com";
+string merchant_secret = "yw03C0qe1KpuviiWKYz2sIBeHCpXB54J";
+*/
+/* End of WBandSmith creds */
+
 
 // This will create a Sale transaction
 string transaction_type = "sale";
 
 // Request parameters
+// USD is in cents, so 10000 = 100.00 USD. Stick to Praxis' currency list: https://doc.praxiscashier.com/integration_docs/latest/overview/data_formats
+/*
 string currency = "USD";
-// Amount in cents only! 1USD = 100¢
-string amount = "1000";
+string amount = "10000";
+*/
+// JPY and other exotic currencies with higher inflation rates have a fraction other than 100. See the exotic list: https://doc.praxiscashier.com/integration_docs/latest/overview/data_formats
+string currency = "JPY";
+string amount = "10000";
 
 // Get Unix time, seconds
+// UTC = GMT
 DateTime current_time = DateTime.UtcNow;
 long timestamp = ((DateTimeOffset)current_time).ToUnixTimeSeconds();
 
@@ -50,10 +75,15 @@ static byte[] Encrypt(string simpletext, byte[] key, byte[] iv)
     return cipheredtext;
 }
 
-// Raw card details
-string card_number = "4000027891380961";
-string card_exp = "12/2026";
-string cvv = "568";
+// Raw card details. Use AES-256-CBC for the encryption. 568 is for 3NDS and 333 is for 3DS
+string card_number = "5176636352156580";
+string card_exp = "04/2027";
+// 333 will trigger 3DS
+string cvv = "333";
+// 568 will trigger N3DS
+//string cvv = "568";
+// will trigger a failure (insufficient funds)
+// string cvv = "801";
 
 // Get the AES key (the merchant_secret) and iv (the timestamp)
 byte[] secretKey = Encoding.ASCII.GetBytes(merchant_secret.PadLeft(32, '0'));
@@ -76,7 +106,7 @@ string encryptedCvvString = Convert.ToBase64String(encryptedCvv);
 string user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15";
 string accept_header = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
 string language = "en-us";
-string ip_address = "95.158.149.142";
+string ip_address = "87.120.109.134";
 int timezone_offset = 180;
 string color_depth = "24";
 string pixel_depth = "24";
@@ -93,17 +123,19 @@ Random rnd = new Random();
 int cid = rnd.Next();
 string locale = "en-GB";
 // customer_data object
-string country = "ES";
-string first_name = "John";
-string last_name = "Smith";
-string dob = "01/01/1950";
-string email = "tony.stoyanov@tiebreak.solutions";
+string country = "JP";
+string first_name = "Musashibo";
+string last_name = "Bankey";
+string dob = "01/01/1978";
+string email = "test.jpy.mc@qq.com";
 string phone = "359888123456";
 string zip = "10010";
-string city = "Malaga";
-string address = "123 Calle del Sol";
+string city = "Sapporo";
+string address = "Keiko Juku 12";
 int profile = 0;
-// This routes your transaction to the relevant Payment Solution Provider (PSP)0
+// This routes your transaction to the relevant Payment Solution Provider (PSP)
+// Subaccounbt in PBO CC GW accounts!!!
+// take the hash from Praxis' back office from the Gateways view 
 string gateway = "040e154f306f145b84208512d00ef8d9";
 // Callback part
 string notification_url = "https://165191ec2e6bda1c110b03cd4e4f9e79.m.pipedream.net";
