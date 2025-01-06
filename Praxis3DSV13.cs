@@ -41,8 +41,9 @@ string transaction_type = "sale";
 string currency = "USD";
 string amount = "10000";
 */
-// JPY and other exotic currencies with higher inflation rates have a fraction other than 100. See the exotic list: https://doc.praxiscashier.com/integration_docs/latest/overview/data_formats
+// JPY and other exotic currencies with higher inflation rates are NOT a fraction of 1 e.g., 10000 units = 10000 JPY (cca 65 USD in Jan 2025). See the exotic list: https://doc.praxiscashier.com/integration_docs/latest/overview/data_formats
 string currency = "JPY";
+// Always process JPY as it is, so 10000 = 10000 JPY. Do NOT calculate like you do the USD, EUR, etc.
 string amount = "10000";
 
 // Get Unix time, seconds
@@ -125,7 +126,7 @@ string locale = "en-GB";
 // customer_data object
 string country = "JP";
 string first_name = "Musashibo";
-string last_name = "Bankey";
+string last_name = "Benkei";
 string dob = "01/01/1978";
 string email = "test.jpy.mc@qq.com";
 string phone = "359888123456";
