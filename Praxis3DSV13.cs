@@ -42,7 +42,7 @@ string currency = "USD";
 string amount = "10000";
 */
 // JPY and other exotic currencies with higher inflation rates are NOT a fraction of 1 e.g., 10000 units = 10000 JPY (cca 65 USD in Jan 2025). See the exotic list: https://doc.praxiscashier.com/integration_docs/latest/overview/data_formats
-string currency = "JPY";
+string currency = "EUR";
 // Always process JPY as it is, so 10000 = 10000 JPY. Do NOT calculate like you do the USD, EUR, etc.
 string amount = "10000";
 
@@ -77,8 +77,8 @@ static byte[] Encrypt(string simpletext, byte[] key, byte[] iv)
 }
 
 // Raw card details. Use AES-256-CBC for the encryption. 568 is for 3NDS and 333 is for 3DS
-string card_number = "5176636352156580";
-string card_exp = "04/2027";
+string card_number = "5591390000000504";
+string card_exp = "12/2029";
 // 333 will trigger 3DS
 string cvv = "333";
 // 568 will trigger N3DS
@@ -122,22 +122,23 @@ int javascript_enabled = 1;
 Random rnd = new Random();
 // TradeNetworks.dbo.Users.UserId
 int cid = rnd.Next();
-string locale = "en-GB";
+string locale = "en-US";
 // customer_data object
-string country = "JP";
-string first_name = "Musashibo";
-string last_name = "Benkei";
+string country = "BG";
+string first_name = "Tony";
+string last_name = "Stoyanov";
 string dob = "01/01/1978";
-string email = "test.jpy.mc@qq.com";
+string email = "tony.stoyanov@tiebreak.dev";
 string phone = "359888123456";
-string zip = "10010";
-string city = "Sapporo";
-string address = "Keiko Juku 12";
+string zip = "1000";
+string city = "Sofia";
+string address = "3 Nikola Tesla St";
 int profile = 0;
 // This routes your transaction to the relevant Payment Solution Provider (PSP)
 // Subaccounbt in PBO CC GW accounts!!!
 // take the hash from Praxis' back office from the Gateways view 
-string gateway = "040e154f306f145b84208512d00ef8d9";
+// Trust Payments IFH 3DS AFT Demo
+string gateway = "17ded3052c1972486454fb2505323e30";
 // Callback part
 string notification_url = "https://165191ec2e6bda1c110b03cd4e4f9e79.m.pipedream.net";
 // 3DS Return URL to Deposit Site
