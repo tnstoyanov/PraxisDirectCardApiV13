@@ -77,7 +77,7 @@ static byte[] Encrypt(string simpletext, byte[] key, byte[] iv)
 }
 
 // Raw card details. Use AES-256-CBC for the encryption. 568 is for 3NDS and 333 is for 3DS
-string card_number = "5591390000000504";
+string card_number = "4900490000000501";
 string card_exp = "12/2029";
 // 333 will trigger 3DS
 string cvv = "333";
